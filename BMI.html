@@ -1,0 +1,149 @@
+<!-- Обновленный JavaScript (script.js) -->
+<script>
+    document.getElementById("bmiForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const weight = parseFloat(document.getElementById("weight").value);
+    const heightInCm = parseFloat(document.getElementById("height").value);
+    const heightInMeters = heightInCm / 100;
+    const age = parseInt(document.getElementById("age").value);
+    const sex = document.getElementById("sex").value;
+
+    const bmi = (weight / (heightInMeters * heightInMeters)).toFixed(2);
+    let category = '';
+    let advice = '';
+
+    if (bmi < 18.5) {
+        category = 'Недостаточная масса тела';
+        advice = 'Рекомендуется проконсультироваться с врачом.';
+    } else if (bmi >= 18.5 && bmi < 24.9) {
+        category = 'Нормальная масса тела';
+        advice = 'Вы на правильном пути, продолжайте в том же духе!';
+    } else if (bmi >= 25 && bmi < 29.9) {
+        category = 'Избыточная масса тела';
+        advice = 'Рекомендуется следить за своим питанием и активностью.';
+    } else {
+        category = 'Ожирение';
+        advice = 'Необходимо обратиться к специалисту.';
+    }
+
+    const resultDiv = document.getElementById("result");
+    resultDiv.innerHTML = `
+        <strong>Ваш BMI:</strong> ${bmi}<br>
+        <strong>Это означает:</strong> ${category}<br>
+        <strong>Возраст:</strong> ${age}<br>
+        <strong>Пол:</strong> ${sex === 'male' ? 'Мужчина' : 'Женщина'}<br>
+        <p>${advice}</p>
+    `;
+});
+</script>
+<!-- Обновленный JavaScript (script.js) -->
+
+<!-- Обновленный CSS (styles.css) -->
+<style>
+    body {
+    font-family: 'Arial', sans-serif;
+    background-color: #e9ecef;
+    color: #343a40;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 320px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #495057;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="number"], select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+.result {
+    margin-top: 20px;
+    font-size: 1.2em;
+    text-align: center;
+}
+</style>
+<!-- Обновленный CSS (styles.css) -->
+
+<!-- Обновленный HTML (index.html) -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Калькулятор BMI</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Калькулятор Индекса Массы Тела (BMI)</h1>
+        <form id="bmiForm">
+            <div class="form-group">
+                <label for="weight">Вес (кг):</label>
+                <input type="number" id="weight" required>
+            </div>
+            <div class="form-group">
+                <label for="height">Рост (см):</label>
+                <input type="number" id="height" required>
+            </div>
+            <div class="form-group">
+                <label for="age">Возраст:</label>
+                <input type="number" id="age" required>
+            </div>
+            <div class="form-group">
+                <label for="sex">Пол:</label>
+                <select id="sex" required>
+                    <option value="male">Мужчина</option>
+                    <option value="female">Женщина</option>
+                </select>
+            </div>
+            <button type="submit">Рассчитать BMI</button>
+            <div id="result" class="result"></div>
+        </form>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+<!-- Обновленный HTML (index.html) -->
+
+https://www.yandex.ru/video/preview/5500839063881984385
